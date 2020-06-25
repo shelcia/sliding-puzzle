@@ -8,6 +8,56 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+    <h2>Sliding tile Puzzle</h2>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Instructions</p>
+        <ul>
+          <li>
+            The game can be played in Two modes
+            <ol>
+              <li>Timer Mode</li>
+              <li>Non-Timer Mode</li>
+            </ol>
+          </li>
+          <li>
+            In timer Mode you will have to complete the game within 60 seconds
+            to win.
+          </li>
+          <li>To start timer Mode click the Button named Start</li>
+          <li>
+            In case you want to reset the Timer click the button named Reset
+          </li>
+          <li>
+            If you want to Reset all tiles to their original place click Reset
+            Tile button
+          </li>
+          <li>To play Non-Timer mode click shuffle to play</li>
+        </ul>
+        <p>Happy Gaming</p>
+      </div>
+    </div>
+    <div id="ResModal" class="modal">
+      <div id="modal-content" class="modal-content">
+        <span id="resclose" class="close">&times;</span>
+      </div>
+    </div>
+    <div class="container-header">
+      <!-- <div><button type="button">Difficulty</button></div> -->
+      <div>
+        <select class="select" id="Difficulty">
+          <option value="1">Easy</option>
+          <option value="2">Medium</option>
+          <option value="3">Difficult</option>
+        </select>
+      </div>
+      <div>
+        <button id="Instructions" type="button">Instructions</button>
+      </div>
+
+      <div><button type="button" id="timer">Timer</button></div>
+    </div>
     <div class="container">
       <div id="1" onclick="move(id)">1</div>
       <div id="2" onclick="move(id)">2</div>
@@ -28,6 +78,13 @@
     </div>
     <div class="container-button">
       <div><button type="button" onclick="shuffle()">Shuffle</button></div>
+      <div><button type="button" onclick="resetTimer()">Reset</button></div>
+      <div>
+        <button type="button" onclick="startTimer()">Start</button>
+      </div>
+      <div>
+        <button type="button" onclick="location.reload();">Reset Tile</button>
+      </div>
     </div>
     <script src="js/script.js"></script>
   </body>
