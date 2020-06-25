@@ -9,7 +9,6 @@
   </head>
   <body>
     <div class="container">
-      <!-- <ul class="sliding-puzzle"> -->
       <div id="1" onclick="move(id)">1</div>
       <div id="2" onclick="move(id)">2</div>
       <div id="3" onclick="move(id)">3</div>
@@ -25,8 +24,10 @@
       <div id="13" onclick="move(id)">13</div>
       <div id="14" onclick="move(id)">14</div>
       <div id="15" onclick="move(id)">15</div>
-      <div id="16" class="empty">&nbsp;</div>
-      <!-- </ul> -->
+      <div id="16" onclick="move(id)" class="empty">&nbsp;</div>
+    </div>
+    <div class="container-button">
+      <div><button type="button" onclick="shuffle()">Shuffle</button></div>
     </div>
     <script src="js/script.js"></script>
   </body>
