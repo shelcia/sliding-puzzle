@@ -2,9 +2,10 @@ let temp = "";
 let empty_pos = 16;
 const move = id => {
   let movable_pos = exchangeable(id);
-  console.log("empty " + empty_pos);
   console.log(movable_pos);
-  if (movable_pos.includes(empty_pos)) {
+  console.log("empty " + empty_pos);
+  let constrictMoment = isThere(movable_pos, empty_pos);
+  if (constrictMoment) {
     let tileprev = document.getElementById(id);
     let tilenext = document.getElementById(empty_pos);
     temp = tileprev.innerHTML;
@@ -13,7 +14,7 @@ const move = id => {
     document.getElementById(id).setAttribute("class", "empty");
     document.getElementById(empty_pos).removeAttribute("class");
     empty_pos = id;
-    console.log(" new empty " + empty_pos);
+    // console.log(" new empty " + empty_pos);
   } else {
     console.log("you cant change");
   }
@@ -36,4 +37,28 @@ const exchangeable = id => {
   if (id == 14) return [10, 13, 15];
   if (id == 15) return [11, 14, 16];
   if (id == 16) return [12, 15];
+};
+
+const isThere = (movable_pos, empty_pos) => {
+  let k = 0;
+  for (let i in movable_pos) {
+    if (movable_pos[i] == empty_pos) k++;
+  }
+  if (k == 0) return false;
+  else return true;
+};
+const shuffle = () => {
+  let rand;
+  for (let i = 0; i < 300; i++) {
+    rand = Rand();
+    console.log(rand);
+    move(rand);
+  }
+};
+
+const Rand = () => {
+  let min = 1;
+  let max = 16;
+  let random = Math.floor(Math.random() * (+max - +min)) + +min;
+  return random;
 };
