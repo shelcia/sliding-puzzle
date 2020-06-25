@@ -2,33 +2,56 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   background: linear-gradient(to Right, #fe0e7e, #ff5ba7);
 }
+
 .container {
+  display: grid;
   height: 70vh;
   width: 70vh;
-  border: 1px solid black;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
+  grid-gap: 2vh;
   margin: auto;
-  margin-top: 5vh;
+  grid-template-columns: auto auto auto auto;
+  grid-row: auto auto auto auto;
+  /* transition: all 0.4s ease; */
 }
-.container .sliding-puzzle {
-  list-style-type: none;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-.container .sliding-puzzle .tile {
-  position: absolute;
-  width: 25%;
-  height: 35%;
+
+.container > div {
   background-color: rgba(255, 255, 255, 0.5);
-  cursor: pointer;
+  border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-sizing: border-box;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+.container .empty {
+  background-color: rgba(255, 255, 255, 0);
+  transition: all 0.3s ease-in;
+}
+.container-button {
+  display: grid;
+  height: 10vh;
+  width: 70vh;
+  grid-gap: 2vh;
+  margin: auto;
+  grid-template-columns: auto auto auto auto;
+  grid-row: auto;
+}
+.container-button > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* cursor: pointer; */
+  transition: all 0.3s ease-in;
+}
+.container-button > div button {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+  padding: 10px 15px;
+  box-shadow: 3px 6px 6px #00000029;
+}
+.container-button > div button:hover {
+  background-color: rgb(0, 0, 0);
 }
