@@ -1,0 +1,34 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background: linear-gradient(to Right, #fe0e7e, #ff5ba7);
+}
+.container {
+  height: 70vh;
+  width: 70vh;
+  border: 1px solid black;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  margin: auto;
+  margin-top: 5vh;
+}
+.container .sliding-puzzle {
+  list-style-type: none;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.container .sliding-puzzle .tile {
+  position: absolute;
+  width: 25%;
+  height: 35%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
