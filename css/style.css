@@ -1,6 +1,10 @@
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   background: linear-gradient(to Right, #fe0e7e, #ff5ba7);
+  /* background: linear-gradient(to Right, #009f00, #00f700); */
+  /* background: linear-gradient(to Right, #fbff00, #a1a400); */
+  /* background: linear-gradient(to Right, #0e2afe, #0016bd); */
+  /* background: linear-gradient(to Right, #b60efe, #690096); */
 }
 h2 {
   margin: auto;
@@ -19,7 +23,8 @@ h2 {
   margin: auto;
   grid-template-columns: auto auto auto auto;
   grid-row: auto auto auto auto;
-  /* transition: all 0.4s ease; */
+  /* border: 3px solid #000000; */
+  transition: all 0.2s ease;
 }
 
 .container > div {
@@ -29,11 +34,17 @@ h2 {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: all 0.3s ease-in;
+  transition: all 0.2s ease-in;
+}
+.container > div:hover {
+  background-color: rgba(255, 255, 255, 0.9);
 }
 .container .empty {
   background-color: rgba(255, 255, 255, 0);
-  transition: all 0.3s ease-in;
+  transition: all 0.2s ease-in;
+}
+.container .empty:hover {
+  background-color: rgba(255, 255, 255, 0);
 }
 .container-button {
   display: grid;
@@ -74,6 +85,14 @@ h2 {
 .container-button > div button:hover,
 .container-header > div button:hover {
   background-color: rgb(0, 0, 0);
+}
+.container-button > div button:focus,
+.container-header > div button:focus {
+  outline: none;
+}
+.container-header > div .timer {
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0);
 }
 .modal {
   display: none;
@@ -133,7 +152,35 @@ h2 {
   transition: all 0.3s ease-in;
   padding: 10px 8px;
 }
-
+.color-container {
+  display: grid;
+  height: 10vh;
+  width: 70vh;
+  grid-gap: 2vh;
+  margin: auto;
+  grid-template-columns: auto auto auto auto auto;
+  grid-row: auto;
+}
+.color-container > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in;
+}
+.color-container > div button {
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+  padding: 10px 15px;
+  box-shadow: 3px 6px 6px #00000029;
+}
+.color-container > div button:hover {
+  box-shadow: 12px 12px 0px #00000029;
+}
+.color-container > div button:focus {
+  outline: none;
+}
 @media only screen and (max-width: 768px) {
   body {
     background: #fe0e7e;
@@ -158,5 +205,8 @@ h2 {
   }
   .modal {
     width: 100%;
+  }
+  .color-container {
+    display: none;
   }
 }
