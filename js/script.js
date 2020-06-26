@@ -342,6 +342,22 @@ reload_button.innerHTML =
   "ResetTile <i style='font-size:12px' class='material-icons'>crop_square</i>";
 document.getElementById("div34").appendChild(reload_button);
 
+var containerfinish = document.createElement("div");
+containerfinish.setAttribute("id", "containerfinish");
+containerfinish.setAttribute("class", "containerfinish");
+document.body.append(containerfinish);
+
+divfinish = document.createElement("div");
+divfinish.setAttribute("id", "divfinish");
+document.getElementById("containerfinish").appendChild(divfinish);
+
+finish_button = document.createElement("button");
+finish_button.setAttribute("type", "button");
+finish_button.setAttribute("id", "finish_btn");
+finish_button.setAttribute("onclick", "Finish_task()");
+finish_button.innerHTML = "Finish";
+document.getElementById("divfinish").appendChild(finish_button);
+
 //funtions begin here
 let temp = "";
 let empty_pos = 16;
@@ -471,13 +487,6 @@ const correctPos = () => {
   }
 };
 
-// const coins =()=>{
-//   let result=correctPos()
-//   if(result=="Congratulations .. You are indeed a master peice"){
-//     get_time
-//   }
-// }
-
 //timer global variables
 let startTime;
 let updatedTime;
@@ -487,6 +496,8 @@ let savedTime;
 let paused = 0;
 let running = 0;
 let timerDisplay = document.getElementById("timer");
+let finish_buttons = document.getElementById("finish_btn");
+let seconds = 0;
 
 const startTimer = () => {
   if (!running) {
@@ -494,8 +505,9 @@ const startTimer = () => {
     tInterval = setInterval(getShowTime, 1);
     paused = 0;
     running = 1;
+    shuffle();
+    finish_buttons.style.display = "block";
   }
-  shuffle();
 };
 const resetTimer = () => {
   clearInterval(tInterval);
@@ -506,6 +518,7 @@ const resetTimer = () => {
   seconds = "0";
   timerDisplay.innerHTML = seconds + "s";
 };
+
 const getShowTime = () => {
   updatedTime = new Date().getTime();
   if (savedTime) {
@@ -513,7 +526,7 @@ const getShowTime = () => {
   } else {
     difference = updatedTime - startTime;
   }
-  var seconds = Math.floor((difference % (1000 * 60)) / 1000);
+  seconds = Math.floor((difference % (1000 * 60)) / 1000);
   seconds = seconds < 10 ? "0" + seconds : seconds;
   timerDisplay.innerHTML = seconds + "s";
   if (seconds == 59) {
@@ -523,6 +536,7 @@ const getShowTime = () => {
     resultModal();
   }
 };
+
 let button_Modal = document.getElementById("Instructions");
 let modal = document.getElementById("myModal");
 let close_btn = document.getElementsByClassName("close")[0];
@@ -546,7 +560,7 @@ let res_close_btn = document.getElementById("resclose");
 const resultModal = () => {
   res_modal.style.display = "block";
   let result = correctPos();
-  console.log(result);
+  // console.log(result);
   res_modal_content.innerHTML = result;
 };
 res_close_btn.onclick = function() {
@@ -557,7 +571,36 @@ window.onclick = function(event) {
     res_modal.style.display = "none";
   }
 };
-
+const resultModal_before = (time_taken, coins_earned) => {
+  console.log(time_taken);
+  res_modal.style.display = "block";
+  let result = correctPos();
+  res_modal_content.innerHTML =
+    result +
+    "      " +
+    "time_taken  :  " +
+    time_taken +
+    "s" +
+    "      " +
+    "coins :   " +
+    coins_earned;
+};
+const coins = time => {
+  let result = correctPos();
+  if (result == "Congratulations .. You are indeed a master peice") {
+    return (60 - time) * 100;
+  } else {
+    return "better luck next time ";
+  }
+};
+const Finish_task = () => {
+  resetTimer();
+  let time_elapsed = seconds;
+  console.log(time_elapsed);
+  let coins_earned = coins(time_elapsed);
+  resultModal_before(time_elapsed, coins_earned);
+  finish_buttons.style.display = "none";
+};
 const bgchange = color => {
   // let x = document.body.style.background;
   switch (color) {
