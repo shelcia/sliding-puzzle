@@ -575,15 +575,7 @@ const resultModal_before = (time_taken, coins_earned) => {
   console.log(time_taken);
   res_modal.style.display = "block";
   let result = correctPos();
-  res_modal_content.innerHTML =
-    result +
-    "      " +
-    "time_taken  :  " +
-    time_taken +
-    "s" +
-    "      " +
-    "coins :   " +
-    coins_earned;
+  res_modal_content.innerHTML = result + "      " + "coins :   " + coins_earned;
 };
 const coins = time => {
   let result = correctPos();
