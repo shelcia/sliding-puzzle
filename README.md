@@ -29,4 +29,4 @@ Difficulty level can be chosen in dropdown for both Modes
 
 Happy Gaming
 
-The app is deployed here at https://sliding-puzzle-dom.netlify.app/
+The app is deployed here at https://shelcia.github.io/sliding-puzzle/
