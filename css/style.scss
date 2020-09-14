@@ -4,7 +4,7 @@ $buttonColor: rgba(0, 0, 0, 0.5);
 $shadow: 6px 6px 6px #00000005;
 $white: rgba(255, 255, 255, 0.9);
 
-body {
+* {
   font-family: "Poppins", sans-serif;
 }
 
@@ -40,6 +40,7 @@ body {
   grid-template-columns: auto auto auto auto;
   grid-row: auto auto auto auto;
   transition: all 0.1s ease;
+  box-shadow: $shadow;
   div {
     background-color: $white;
     box-shadow: $shadow;
@@ -63,22 +64,10 @@ body {
 .container-button,
 .container-header,
 .containerfinish {
-  display: grid;
   height: 10vh;
   width: 70vh;
-  grid-gap: 2vh;
   margin: auto;
-  grid-row: auto;
-}
-.container-button {
-  grid-template-columns: auto auto auto auto;
-}
-.container-header {
-  grid-template-columns: auto auto auto;
-}
-.containerfinish {
-  grid-gap: 0px;
-  grid-template-columns: auto;
+  @include displayFlex(space-evenly, center);
 }
 .container-button > div,
 .container-header > div,
@@ -97,6 +86,36 @@ body {
     @include buttonStyle();
   }
   .select {
-    @include buttonStyle();
+    cursor: pointer;
+    color: $white;
+    background-color: $buttonColor;
+    padding: 5px 10px;
+    &:hover {
+      background-color: $black;
+    }
+    &:focus {
+      outline: none;
+      background-color: $buttonColor;
+      border-color: $black;
+      box-shadow: 0 0 0 0.2rem $buttonColor;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .container-header,
+  .container,
+  .container-button,
+  .containerfinish {
+    width: 90%;
+    padding: 0;
+    margin: auto;
+    flex-wrap: wrap;
+  }
+  .game {
+    width: 90%;
+  }
+  .container-button > div {
+    grid-gap: 10px;
   }
 }

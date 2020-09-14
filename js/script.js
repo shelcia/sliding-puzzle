@@ -5,8 +5,6 @@ let shuffle_dificulty = 1;
 
 const move = (id) => {
   let movable_pos = exchangeable(id);
-  // console.log(movable_pos);
-  // console.log("empty " + empty_pos);
   let constrictMoment = isThere(movable_pos, empty_pos);
   if (constrictMoment) {
     let tileprev = document.getElementById(id);

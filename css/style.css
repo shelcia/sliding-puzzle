@@ -1,4 +1,4 @@
-body {
+* {
   font-family: "Poppins", sans-serif;
 }
 
@@ -14,6 +14,8 @@ body {
   grid-row: auto auto auto auto;
   -webkit-transition: all 0.1s ease;
   transition: all 0.1s ease;
+  -webkit-box-shadow: 6px 6px 6px #00000005;
+          box-shadow: 6px 6px 6px #00000005;
 }
 
 .game div {
@@ -54,29 +56,18 @@ body {
 .container-button,
 .container-header,
 .containerfinish {
-  display: -ms-grid;
-  display: grid;
   height: 10vh;
   width: 70vh;
-  grid-gap: 2vh;
   margin: auto;
-  grid-row: auto;
-}
-
-.container-button {
-  -ms-grid-columns: auto auto auto auto;
-      grid-template-columns: auto auto auto auto;
-}
-
-.container-header {
-  -ms-grid-columns: auto auto auto;
-      grid-template-columns: auto auto auto;
-}
-
-.containerfinish {
-  grid-gap: 0px;
-  -ms-grid-columns: auto;
-      grid-template-columns: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .container-button > div,
@@ -154,15 +145,10 @@ body {
 }
 
 .container-header > div .select {
-  background-color: rgba(0, 0, 0, 0.5);
-  border: none;
-  color: white;
   cursor: pointer;
-  -webkit-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
-  padding: 10px 15px;
-  -webkit-box-shadow: 6px 6px 6px #00000005;
-          box-shadow: 6px 6px 6px #00000005;
+  color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px 10px;
 }
 
 .container-header > div .select:hover {
@@ -175,5 +161,24 @@ body {
   border-color: black;
   -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.5);
           box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.5);
+}
+
+@media only screen and (max-width: 768px) {
+  .container-header,
+  .container,
+  .container-button,
+  .containerfinish {
+    width: 90%;
+    padding: 0;
+    margin: auto;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .game {
+    width: 90%;
+  }
+  .container-button > div {
+    grid-gap: 10px;
+  }
 }
 /*# sourceMappingURL=style.css.map */
