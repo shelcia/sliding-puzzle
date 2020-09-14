@@ -25,10 +25,15 @@
         Sliding Puzzle
       </a>
     </nav>
-    <div id="myModal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <p>Instructions</p>
+    <!-- The Modal -->
+<div class="modal fade" id="instructionsModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Instructions</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
         <ul>
           <li>
             The game can be played in Two modes
@@ -53,7 +58,12 @@
         </ul>
         <p>Happy Gaming</p>
       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
     </div>
+  </div>
+</div>
     <div id="ResModal" class="modal">
       <div id="res_modal_content" class="modal-content">
         <span id="resclose" class="close">&times;</span>
@@ -61,66 +71,19 @@
     </div>
     <div class="container-header" id="container1">
       <div id="div11">
-        <select class="select" id="Difficulty">
+        <select class="form-control select" id="Difficulty">
           <option value="1">Easy</option>
           <option value="2">Medium</option>
           <option value="3">Difficult</option>
         </select>
       </div>
       <div id="div12">
-        <button id="Instructions" type="button">Instructions</button>
+        <button id="Instructions" type="button" class="btn btn-primary" data-toggle="modal" data-target="#instructionsModal">Instructions</button>
       </div>
       <div id="div13">
-        <button id="timer" class="timer" type="button">Timer</button>
+        <button id="timer" class="btn btn-primary timer" type="button">Timer</button>
       </div>
     </div>
-    <!-- <div id="containercolor" class="color-container">
-      <div id="div1c">
-        <button
-          id="1c"
-          onclick="bgchange(id)"
-          style="background: linear-gradient(to Right, #fe0e7e, #ff5ba7)"
-        >
-          Pink
-        </button>
-      </div>
-      <div id="div2c">
-        <button
-        id="2c"
-        onclick="bgchange(id)"
-        style="background: linear-gradient(to Right, #009f00, #00f700)"
-      >
-        Green
-      </button>
-      </div>
-      <div id="div3c">
-        <button
-        id="3c"
-        onclick="bgchange(id)"
-        style="background: linear-gradient(to Right, #fbff00, #a1a400)"
-      >
-       Yellow
-      </button>
-      </div>
-      <div id="div4c">
-        <button
-        id="4c"
-        onclick="bgchange(id)"
-        style="background: linear-gradient(to Right, #0e2afe, #0016bd)"
-      >
-        Blue
-      </button>
-      </div>
-      <div id="div5c">
-        <button
-        id="5c"
-        onclick="bgchange(id)"
-        style="background: linear-gradient(to Right, #b60efe, #690096)"
-      >
-        Blue
-      </button>
-      </div>
-      </div> -->
     </div>
     <div id="container2" class="game">
       <div id="1" onclick="move(id)">1</div>
@@ -141,18 +104,18 @@
       <div id="16" onclick="move(id)" class="empty">&nbsp;</div>
     </div>
     <div class="container-button">
-      <div><button type="button" onclick="shuffle()">Shuffle <i style='font-size:12px' class='material-icons'>shuffle</i></button></div>
-      <div><button type="button" onclick="resetTimer()">Reset <i style='font-size:12px' class='material-icons'>redo</i></button></div>
+      <div><button type="button" class="btn btn-primary" onclick="shuffle()">Shuffle </button></div>
+      <div><button type="button" class="btn btn-primary" onclick="resetTimer()">Reset </button></div>
       <div>
-        <button type="button" onclick="startTimer()">Start <i style='font-size:12px' class='material-icons'>timer</i></button>
+        <button type="button" class="btn btn-primary" onclick="startTimer()">Start </button>
       </div>
       <div>
-        <button type="button" onclick="location.reload();">Reset Tile <i style='font-size:12px' class='material-icons'>crop_square</i></button>
+        <button type="button" class="btn btn-primary" onclick="location.reload();">Reset Tile</button>
       </div>
     </div>
     <div id="containerfinish" class="containerfinish">
       <div id="divfinish">
-        <button type="button" id="finish_btn" onclick="Finish_task()">Finish</button>
+        <button type="button" class="btn btn-primary" id="finish_btn" onclick="Finish_task()">Finish</button>
       </div>
     </div>
     <script src="js/script.js"></script>
