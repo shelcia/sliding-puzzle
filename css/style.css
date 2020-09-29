@@ -5,17 +5,15 @@
 .game {
   display: -ms-grid;
   display: grid;
-  height: 60vh;
-  width: 60vh;
-  grid-gap: 2vh;
+  height: 415px;
+  width: 415px;
+  grid-gap: 5px;
   margin: auto;
-  -ms-grid-columns: auto auto auto auto;
-      grid-template-columns: auto auto auto auto;
-  grid-row: auto auto auto auto;
+  -ms-grid-columns: 100px 100px 100px 100px;
+      grid-template-columns: 100px 100px 100px 100px;
+  grid-row: 100px 100px 100px 100px;
   -webkit-transition: all 0.1s ease;
   transition: all 0.1s ease;
-  -webkit-box-shadow: 6px 6px 6px #00000005;
-          box-shadow: 6px 6px 6px #00000005;
 }
 
 .game div {
@@ -164,6 +162,11 @@
 }
 
 @media only screen and (max-width: 768px) {
+  #difficulty,
+  #timer {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+  }
   .container-header,
   .container,
   .container-button,
@@ -174,8 +177,21 @@
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
   }
+  .container-header div button,
+  .container div button,
+  .container-button div button,
+  .containerfinish div button {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+  }
   .game {
-    width: 90%;
+    height: 326px;
+    width: 326px;
+    grid-gap: 2px;
+    margin: auto;
+    -ms-grid-columns: 80px 80px 80px 80px;
+        grid-template-columns: 80px 80px 80px 80px;
+    grid-row: 80px 80px 80px 80px;
   }
   .container-button > div {
     grid-gap: 10px;

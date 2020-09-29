@@ -1,7 +1,10 @@
-//funtions begin here
+//FUNCTIONS BEGIN HERE
+
 let temp = "";
 let empty_pos = 16;
 let shuffle_dificulty = 1;
+
+//MOVE THE TILE BASED ONCLICK EVENT
 
 const move = (id) => {
   let movable_pos = exchangeable(id);
@@ -19,7 +22,9 @@ const move = (id) => {
     console.log("you can't change");
   }
 };
-//in order to constraint motion
+
+//ALL POSSIBLE TILE LOCATIONS
+
 const exchangeable = (id) => {
   if (id == 1) return [2, 5];
   if (id == 2) return [1, 3, 6];
@@ -39,6 +44,7 @@ const exchangeable = (id) => {
   if (id == 16) return [12, 15];
 };
 
+//
 const isThere = (movable_pos, empty_pos) => {
   let k = 0;
   for (let i in movable_pos) {
@@ -47,28 +53,37 @@ const isThere = (movable_pos, empty_pos) => {
   if (k == 0) return false;
   else return true;
 };
+
+// USER SELECTION ON DIFFICULTY
+
 const select_difficulty = () => {
   let difficulty_option = document.getElementById("Difficulty").selectedIndex;
   shuffle_dificulty = document.getElementsByTagName("option")[difficulty_option]
     .value;
 };
+
+//SHUFFLE RANDOMLY
+
 const shuffle = () => {
   let rand;
   select_difficulty();
   console.log(shuffle_dificulty);
   switch (shuffle_dificulty) {
+    //EASY LEVEL SHUFFLE
     case "1":
       for (let i = 0; i < 100; i++) {
         rand = Rand();
         move(rand);
       }
       break;
+    //MEDIUM LEVEL SHUFFLE
     case "2":
       for (let i = 0; i < 200; i++) {
         rand = Rand();
         move(rand);
       }
       break;
+    //DIFFICULT LEVEL SHUFFLE
     case "3":
       for (let i = 0; i < 300; i++) {
         rand = Rand();
@@ -78,6 +93,8 @@ const shuffle = () => {
   }
 };
 
+//PRODUCES RANDOM NUMBER TO SHUFFLE
+
 const Rand = () => {
   let min = 1;
   let max = 16;
@@ -85,9 +102,10 @@ const Rand = () => {
   return random;
 };
 
+//VERIFICATION IF ALL TILES ARE IN CORRECT POSITION EITHER WHEN AFTER 60 SECONDS OR WHEN USER CLICKS FINISH
+
 const correctPos = () => {
   let a1 = document.getElementById("1");
-  // console.log(a1.innerHTML);
   let a2 = document.getElementById("2");
   let a3 = document.getElementById("3");
   let a4 = document.getElementById("4");
@@ -125,7 +143,10 @@ const correctPos = () => {
   }
 };
 
-//timer global variables
+//ALL TIMER FUNCTIONS
+
+//ALL GLOBAL VARIABLES
+
 let startTime;
 let updatedTime;
 let difference;
@@ -137,6 +158,8 @@ let timerDisplay = document.getElementById("timer");
 let finish_buttons = document.getElementById("finish_btn");
 let seconds = 0;
 
+//START TIMER FOR THE GAME ON USER CLICKING START BUTTON
+
 const startTimer = () => {
   if (!running) {
     startTime = new Date().getTime();
@@ -147,6 +170,9 @@ const startTimer = () => {
     finish_buttons.style.display = "block";
   }
 };
+
+//RESET TIMER TO 0 SECOND FOR THE GAME ON USER CLICKING RESET BUTTON
+
 const resetTimer = () => {
   clearInterval(tInterval);
   savedTime = 0;
@@ -156,6 +182,8 @@ const resetTimer = () => {
   seconds = "0";
   timerDisplay.innerHTML = seconds + "s";
 };
+
+//DISPLAYINGING TIMER TRIGGERS ON STARTING THE TIMER ENDS AT 60 SECONDS
 
 const getShowTime = () => {
   updatedTime = new Date().getTime();
@@ -190,7 +218,6 @@ window.onclick = function (event) {
   }
 };
 
-// let resbutton_Modal = document.getElementById("Instructions");
 let res_modal = document.getElementById("ResModal");
 let res_modal_content = document.getElementById("res_modal_content");
 let res_close_btn = document.getElementById("resclose");
@@ -198,7 +225,6 @@ let res_close_btn = document.getElementById("resclose");
 const resultModal = () => {
   res_modal.style.display = "block";
   let result = correctPos();
-  // console.log(result);
   res_modal_content.innerHTML = result;
 };
 res_close_btn.onclick = function () {
@@ -209,50 +235,17 @@ window.onclick = function (event) {
     res_modal.style.display = "none";
   }
 };
-const resultModal_before = (time_taken, coins_earned) => {
+const resultModal_before = (time_taken) => {
   console.log(time_taken);
   res_modal.style.display = "block";
   let result = correctPos();
-  res_modal_content.innerHTML = result + "      " + "coins :   " + coins_earned;
+  res_modal_content.innerHTML = result + "      ";
 };
-const coins = (time) => {
-  let result = correctPos();
-  if (result == "Congratulations .. You are indeed a master peice") {
-    return (60 - time) * 100;
-  } else {
-    return "better luck next time ";
-  }
-};
+
 const Finish_task = () => {
   resetTimer();
   let time_elapsed = seconds;
   console.log(time_elapsed);
-  let coins_earned = coins(time_elapsed);
   resultModal_before(time_elapsed, coins_earned);
   finish_buttons.style.display = "none";
-};
-const bgchange = (color) => {
-  // let x = document.body.style.background;
-  switch (color) {
-    case "1c":
-      document.body.style.background =
-        "linear-gradient(to Right, #fe0e7e, #ff5ba7)";
-      break;
-    case "2c":
-      document.body.style.background =
-        "linear-gradient(to Right, #009f00, #00f700)";
-      break;
-    case "3c":
-      document.body.style.background =
-        "linear-gradient(to Right, #fbff00, #a1a400)";
-      break;
-    case "4c":
-      document.body.style.background =
-        "linear-gradient(to Right, #0e2afe, #0016bd)";
-      break;
-    case "5c":
-      document.body.style.background =
-        "linear-gradient(to Right, #b60efe, #690096)";
-      break;
-  }
 };
