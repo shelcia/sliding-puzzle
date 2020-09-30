@@ -197,7 +197,7 @@ const getShowTime = () => {
   seconds = Math.floor((difference % (1000 * 60)) / 1000);
   seconds = seconds < 10 ? "0" + seconds : seconds;
   timerDisplay.innerHTML = seconds + "s";
-  if (seconds == 9) {
+  if (seconds == 59) {
     resetTimer();
     correctPos();
     resultModal();
