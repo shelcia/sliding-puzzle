@@ -3,6 +3,7 @@
 let temp = "";
 let empty_pos = 16;
 let shuffle_dificulty = 1;
+const resultAlert = document.getElementById("result");
 
 //MOVE THE TILE BASED ONCLICK EVENT
 
@@ -18,8 +19,6 @@ const move = (id) => {
     document.getElementById(id).setAttribute("class", "empty");
     document.getElementById(empty_pos).removeAttribute("class");
     empty_pos = id;
-  } else {
-    console.log("you can't change");
   }
 };
 
@@ -44,7 +43,7 @@ const exchangeable = (id) => {
   if (id == 16) return [12, 15];
 };
 
-//
+//CHECKS IF THERS A EMPTY SPACE
 const isThere = (movable_pos, empty_pos) => {
   let k = 0;
   for (let i in movable_pos) {
@@ -167,6 +166,7 @@ const startTimer = () => {
     paused = 0;
     running = 1;
     shuffle();
+    resultAlert.style.display = "none";
     finish_buttons.style.display = "block";
   }
 };
@@ -183,7 +183,7 @@ const resetTimer = () => {
   timerDisplay.innerHTML = seconds + "s";
 };
 
-//DISPLAYINGING TIMER TRIGGERS ON STARTING THE TIMER ENDS AT 60 SECONDS
+//DISPLAYING TIMER TRIGGERS ON STARTING THE TIMER ENDS AT 60 SECONDS
 
 const getShowTime = () => {
   updatedTime = new Date().getTime();
@@ -195,8 +195,7 @@ const getShowTime = () => {
   seconds = Math.floor((difference % (1000 * 60)) / 1000);
   seconds = seconds < 10 ? "0" + seconds : seconds;
   timerDisplay.innerHTML = seconds + "s";
-  if (seconds == 59) {
-    // pauseTimer();
+  if (seconds == 9) {
     resetTimer();
     correctPos();
     resultModal();
@@ -206,6 +205,7 @@ const getShowTime = () => {
 let button_Modal = document.getElementById("Instructions");
 let modal = document.getElementById("myModal");
 let close_btn = document.getElementsByClassName("close")[0];
+
 button_Modal.onclick = function () {
   modal.style.display = "block";
 };
@@ -218,34 +218,23 @@ window.onclick = function (event) {
   }
 };
 
-let res_modal = document.getElementById("ResModal");
-let res_modal_content = document.getElementById("res_modal_content");
-let res_close_btn = document.getElementById("resclose");
-
 const resultModal = () => {
-  res_modal.style.display = "block";
   let result = correctPos();
-  res_modal_content.innerHTML = result;
-};
-res_close_btn.onclick = function () {
-  res_modal.style.display = "none";
-};
-window.onclick = function (event) {
-  if (event.target == res_modal) {
-    res_modal.style.display = "none";
-  }
+  const resultAlert = document.getElementById("result");
+  resultAlert.style.display = "block";
+  resultAlert.innerHTML = `${result}`;
 };
 const resultModal_before = (time_taken) => {
-  console.log(time_taken);
-  res_modal.style.display = "block";
+  // console.log(time_taken);
   let result = correctPos();
-  res_modal_content.innerHTML = result + "      ";
+  resultAlert.style.display = "block";
+  resultAlert.innerHTML = `${result}`;
 };
 
 const Finish_task = () => {
   resetTimer();
   let time_elapsed = seconds;
   console.log(time_elapsed);
-  resultModal_before(time_elapsed, coins_earned);
+  resultModal_before(time_elapsed);
   finish_buttons.style.display = "none";
 };

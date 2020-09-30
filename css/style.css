@@ -197,4 +197,8 @@
     grid-gap: 10px;
   }
 }
+
+.alert {
+  display: none;
+}
 /*# sourceMappingURL=style.css.map */
