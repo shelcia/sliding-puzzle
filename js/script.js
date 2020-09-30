@@ -64,9 +64,10 @@ const select_difficulty = () => {
 //SHUFFLE RANDOMLY
 
 const shuffle = () => {
+  resultAlert.style.display = "none";
   let rand;
   select_difficulty();
-  console.log(shuffle_dificulty);
+  // console.log(shuffle_dificulty);
   switch (shuffle_dificulty) {
     //EASY LEVEL SHUFFLE
     case "1":
@@ -181,6 +182,7 @@ const resetTimer = () => {
   running = 0;
   seconds = "0";
   timerDisplay.innerHTML = seconds + "s";
+  resultAlert.style.display = "none";
 };
 
 //DISPLAYING TIMER TRIGGERS ON STARTING THE TIMER ENDS AT 60 SECONDS
@@ -202,24 +204,9 @@ const getShowTime = () => {
   }
 };
 
-let button_Modal = document.getElementById("Instructions");
-let modal = document.getElementById("myModal");
-let close_btn = document.getElementsByClassName("close")[0];
-
-button_Modal.onclick = function () {
-  modal.style.display = "block";
-};
-close_btn.onclick = function () {
-  modal.style.display = "none";
-};
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
-
 const resultModal = () => {
   let result = correctPos();
+  finish_buttons.style.display = "none";
   const resultAlert = document.getElementById("result");
   resultAlert.style.display = "block";
   resultAlert.innerHTML = `${result}`;
