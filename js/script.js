@@ -56,9 +56,15 @@ const isThere = (movable_pos, empty_pos) => {
 // USER SELECTION ON DIFFICULTY
 
 const select_difficulty = () => {
-  let difficulty_option = document.getElementById("Difficulty").selectedIndex;
-  shuffle_dificulty = document.getElementsByTagName("option")[difficulty_option]
-    .value;
+  let difficulty_value = document.getElementById("Difficulty").value;
+
+  if (difficulty_value === 1) {
+    shuffle_dificulty = "1";
+  } else if (difficulty_value <= 50) {
+    shuffle_dificulty = "2";
+  } else if (difficulty_value <= 100) {
+    shuffle_dificulty = "3";
+  }
 };
 
 //SHUFFLE RANDOMLY
@@ -67,7 +73,7 @@ const shuffle = () => {
   resultAlert.style.display = "none";
   let rand;
   select_difficulty();
-  // console.log(shuffle_dificulty);
+  console.log({ shuffle_dificulty });
   switch (shuffle_dificulty) {
     //EASY LEVEL SHUFFLE
     case "1":
@@ -161,6 +167,7 @@ let seconds = 0;
 //START TIMER FOR THE GAME ON USER CLICKING START BUTTON
 
 const startTimer = () => {
+  // console.log("running");
   if (!running) {
     startTime = new Date().getTime();
     tInterval = setInterval(getShowTime, 1);
@@ -181,7 +188,8 @@ const resetTimer = () => {
   paused = 0;
   running = 0;
   seconds = "0";
-  timerDisplay.innerHTML = seconds + "s";
+  timerDisplay.innerHTML = "00:" + seconds + "0";
+  // + "s"
   resultAlert.style.display = "none";
 };
 
@@ -196,7 +204,8 @@ const getShowTime = () => {
   }
   seconds = Math.floor((difference % (1000 * 60)) / 1000);
   seconds = seconds < 10 ? "0" + seconds : seconds;
-  timerDisplay.innerHTML = seconds + "s";
+  timerDisplay.innerHTML = "00:" + seconds;
+  // + "s"
   if (seconds == 59) {
     resetTimer();
     correctPos();
@@ -224,4 +233,44 @@ const Finish_task = () => {
   console.log(time_elapsed);
   resultModal_before(time_elapsed);
   finish_buttons.style.display = "none";
+};
+
+// SELECT DIFFICULTY
+
+// var slider = document.getElementById("Difficulty");
+
+// slider.oninput = () => {
+//   if (this.value > 0 && this.value < 50) {
+//     this.value = 50;
+//   } else if (this.value > 50) {
+//     this.value = 100;
+//   } else {
+//     this.value = 0;
+//   }
+// };
+
+// MODAL
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function () {
+  modal.style.display = "block";
+};
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+  modal.style.display = "none";
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 };

@@ -3,9 +3,17 @@ $noopacity: rgba(255, 255, 255, 0);
 $buttonColor: rgba(0, 0, 0, 0.5);
 $shadow: 6px 6px 6px #00000005;
 $white: rgba(255, 255, 255, 0.9);
+$background: linear-gradient(
+  135deg,
+  rgba(255, 255, 255, 1) 0%,
+  rgb(244, 244, 244) 100%
+);
+$primary: #5ab9ea;
+$neoshadow: 12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+  -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
 
 * {
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif !important;
 }
 
 @mixin displayFlex($justify, $align) {
@@ -14,21 +22,34 @@ $white: rgba(255, 255, 255, 0.9);
   align-items: $align;
 }
 @mixin buttonStyle {
-  background-color: $buttonColor;
+  box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.2),
+    -12px -12px 24px 0 rgba(255, 255, 255, 0.5);
+  // font-size: 5rem;
+  color: $black;
+  width: 100px;
+  height: 80px;
+  border-radius: 10px;
+  overflow: hidden;
+  // padding: 1.3rem;
+  display: flex;
+  background: $background;
+  // background-color: $buttonColor;
   border: none;
-  color: white;
-  cursor: pointer;
-  transition: all 0.2s ease-in;
-  padding: 10px 15px;
-  box-shadow: $shadow;
+  // color: white;
+  // cursor: pointer;
+  // transition: all 0.2s ease-in;
+  // padding: 10px 15px;
+  // box-shadow: $shadow;
   &:hover {
-    background-color: $black;
+    color: $black;
+    border: none;
+    outline: none;
   }
   &:focus {
     outline: none;
-    background-color: $buttonColor;
-    border-color: $black;
-    box-shadow: 0 0 0 0.2rem $buttonColor;
+    color: $primary;
+    box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+      inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
   }
 }
 .game {
@@ -40,10 +61,10 @@ $white: rgba(255, 255, 255, 0.9);
   grid-template-columns: 100px 100px 100px 100px;
   grid-row: 100px 100px 100px 100px;
   transition: all 0.1s ease;
-  // box-shadow: $shadow;
   div {
-    background-color: $white;
-    box-shadow: $shadow;
+    background: $white;
+    background: $background;
+    box-shadow: $neoshadow;
     border-radius: 5px;
     @include displayFlex(center, center);
     cursor: pointer;
@@ -54,6 +75,7 @@ $white: rgba(255, 255, 255, 0.9);
   }
   .empty {
     background-color: $noopacity;
+    background: transparent;
     box-shadow: none;
     transition: all 0.1s ease-in;
     &:hover {
@@ -78,6 +100,10 @@ $white: rgba(255, 255, 255, 0.9);
     @include buttonStyle();
   }
 }
+.container-button {
+  margin-top: 10vh;
+}
+
 .containerfinish > div button {
   display: none;
 }
@@ -136,4 +162,141 @@ $white: rgba(255, 255, 255, 0.9);
 
 .alert {
   display: none;
+}
+
+#timer {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgb(244, 244, 244) 100%
+  );
+
+  font-weight: 200;
+  box-shadow: $neoshadow;
+  border-radius: 10px;
+  color: black;
+  font-size: 4rem;
+  padding: 1rem;
+}
+
+// MODAL
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+// RNAGE SLIDER
+
+input[type="range"] {
+  /* To remove default styles appplied by webkit browsers */
+  -webkit-appearance: none;
+
+  width: 25em;
+  background: transparent;
+  position: relative;
+}
+
+input[type="range"]:focus {
+  /* To remove default (mostly blue) outline appplied by browsers on :focus */
+  outline: 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  /* Removes the default styling */
+  -webkit-appearance: none;
+
+  width: 1.5em;
+  height: 1.5em;
+  margin: 0.5em 0;
+  background: $primary;
+  border-radius: 100%;
+
+  /* The inset shadow gives depth and makes the thumb look 3 dimensional and the other one shows a subtle effect of the shadow it creates because of the light source coming from the top left of the page */
+  box-shadow: inset 0.8em 0.8em 5px -8px rgba(255, 255, 255, 0.4),
+    inset -0.4em -0.4em 10px -3px rgba(0, 0, 0, 0.2),
+    0.7em 0.5em 7px -0.5em rgba(0, 0, 0, 0.4);
+
+  cursor: pointer;
+}
+
+/*All the same stuff for firefox */
+input[type="range"]::-moz-range-thumb {
+  width: 3em;
+  height: 3em;
+  margin: 0.5em 0;
+  background: $primary;
+  border-radius: 100%;
+  box-shadow: inset 0.8em 0.8em 5px -8px rgba(255, 255, 255, 0.4),
+    inset -0.4em -0.4em 10px -3px rgba(0, 0, 0, 0.2),
+    0.7em 0.5em 7px -0.5em rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  border: 0;
+}
+
+/* RUNNABLE TRACK -> represented by the indented carve in which the ball (thumb) moves */
+/* Webkit browsers */
+input[type="range"]::-webkit-slider-runnable-track {
+  background: transparent;
+  width: 100%;
+  height: 2em;
+  padding: 0 1em;
+  border-radius: 2em;
+
+  /* These shadow are what create the skeumorphic indent on the track. The first one is dark to show places in the indent that light don't reach and the second one shows places where light meets thereby creating the illusion of depth */
+  box-shadow: inset 0.6em 1em 10px rgba(0, 0, 0, 0.15),
+    inset -0.6em -1em 10px rgba(255, 255, 255, 0.415);
+}
+/* For firefox */
+input[type="range"]::-moz-range-track {
+  background: transparent;
+  width: 100%;
+  height: 2em;
+  padding: 0 1em;
+  border-radius: 2em;
+  box-shadow: inset 0.6em 1em 10px rgba(0, 0, 0, 0.15),
+    inset -0.6em -1em 10px rgba(255, 255, 255, 0.415);
+}
+
+.containerfinish {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+@media screen and (max-width: 560px) {
+  .container-button {
+    margin-top: 7vh;
+  }
 }
