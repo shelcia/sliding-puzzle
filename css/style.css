@@ -92,7 +92,8 @@
   -webkit-box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.2), -12px -12px 24px 0 rgba(255, 255, 255, 0.5);
           box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.2), -12px -12px 24px 0 rgba(255, 255, 255, 0.5);
   color: black;
-  width: 100px;
+  width: 120px;
+  margin-right: 2px;
   height: 80px;
   border-radius: 10px;
   overflow: hidden;
@@ -132,7 +133,8 @@
   -webkit-box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.2), -12px -12px 24px 0 rgba(255, 255, 255, 0.5);
           box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.2), -12px -12px 24px 0 rgba(255, 255, 255, 0.5);
   color: black;
-  width: 100px;
+  width: 120px;
+  margin-right: 2px;
   height: 80px;
   border-radius: 10px;
   overflow: hidden;
@@ -154,25 +156,6 @@
   color: #5ab9ea;
   -webkit-box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2), inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
           box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2), inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
-}
-
-.container-header > div .select {
-  cursor: pointer;
-  color: rgba(255, 255, 255, 0.9);
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 5px 10px;
-}
-
-.container-header > div .select:hover {
-  background-color: black;
-}
-
-.container-header > div .select:focus {
-  outline: none;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-color: black;
-  -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.5);
-          box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.5);
 }
 
 @media only screen and (max-width: 768px) {
@@ -251,21 +234,9 @@
 
 /* Modal Content/Box */
 .modal-content {
-  background-color: #fefefe;
   margin: 15% auto;
   /* 15% from the top and centered */
   padding: 20px;
-  border: 1px solid #888;
-  width: 60%;
-  /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
 }
 
 .close:hover,
@@ -342,9 +313,69 @@ input[type="range"]::-moz-range-track {
   margin-bottom: 5vh;
 }
 
+.footer {
+  /* Makes the letters look embossed adding to the skeumorphic theme of the design */
+  color: rgba(0, 0, 0, 0.5);
+  text-shadow: 0.5px 0.5px 0.9px rgba(0, 0, 0, 0.4);
+  z-index: -1;
+}
+
+.difficulty {
+  width: 25em;
+}
+
+.btn-close {
+  -webkit-box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.2), -12px -12px 24px 0 rgba(255, 255, 255, 0.5);
+          box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.2), -12px -12px 24px 0 rgba(255, 255, 255, 0.5);
+  color: black;
+  width: 120px;
+  margin-right: 2px;
+  height: 80px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: linear-gradient(135deg, white 0%, #f4f4f4 100%);
+  border: none;
+  width: auto;
+  margin-right: 0;
+  height: auto;
+  padding: 0.5rem;
+}
+
+.btn-close:hover {
+  color: black;
+  border: none;
+  outline: none;
+}
+
+.btn-close:focus {
+  outline: none;
+  color: #5ab9ea;
+  -webkit-box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2), inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+          box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2), inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+}
+
 @media screen and (max-width: 560px) {
   .container-button {
-    margin-top: 7vh;
+    margin-top: 2vh;
+  }
+  input[type="range"],
+  .difficulty {
+    width: 15em;
+  }
+  .container-button > div button {
+    width: 100px;
+    height: 40px;
+  }
+  .containerfinish {
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+    height: 2vh;
+  }
+  .modal-content {
+    padding: 5px;
   }
 }
 /*# sourceMappingURL=style.css.map */

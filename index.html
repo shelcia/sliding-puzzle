@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- META TAGS -->
+    <title>Sliding Puzzle</title>
+    <meta
+      name="description"
+      content="Play Sliding Puzzle game with timer online !"
+    />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="icon" href="logo.ico" />
-    <title>Sliding Puzzle</title>
     <link rel="stylesheet" href="css/style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Icons"
-      rel="stylesheet"
-    />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300&display=swap"
       rel="stylesheet"
@@ -19,20 +20,18 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> -->
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
   </head>
   <body>
-    <nav
-      class="navbar navbar-expand-sm bg-light navbar-light shadow-sm bg-white"
-    >
-      <a class="navbar-brand" href="/"> Sliding Puzzle </a>
-
-      <p id="myBtn" class="ml-auto mb-0" style="cursor: pointer">
-        How to Play ?
-      </p>
-    </nav>
+    <header>
+      <nav
+        class="navbar navbar-expand-sm bg-light navbar-light shadow-sm bg-white"
+      >
+        <a class="navbar-brand" href="/"> Sliding Puzzle </a>
+        <p id="myBtn" class="ml-auto mb-0" style="cursor: pointer">
+          How to Play ?
+        </p>
+      </nav>
+    </header>
 
     <!-- The Modal -->
     <div id="myModal" class="modal">
@@ -69,34 +68,22 @@
             <p>Happy Gaming !!</p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">
-              Close
-            </button>
+            <button type="button" class="btn-close">Close</button>
           </div>
         </div>
       </div>
     </div>
     <div class="alert alert-warning" id="result"></div>
-
-    <!-- <div>
-      <select class="form-control select" id="Difficulty">
-        <option value="1">Easy</option>
-        <option value="2">Medium</option>
-        <option value="3">Difficult</option>
-      </select>
-    </div> -->
-
-    <div class="container mb-5">
-      <div class="row mt-5">
-        <div class="col-lg-6">
+    <section class="container mb-5">
+      <section class="row mt-5">
+        <aside class="col-lg-6 px-0">
           <div class="text-center mb-5">
             <div id="timer" class="d-inline mx-auto">00:00</div>
           </div>
           <div class="text-center">
             <input type="range" id="Difficulty" />
             <div
-              class="d-flex justify-content-between mx-auto"
-              style="width: 25em"
+              class="d-flex justify-content-between mx-auto difficulty"
               min="1"
               max="100"
               value="1"
@@ -107,31 +94,30 @@
             </div>
           </div>
           <div class="container-button">
-            <div>
-              <button type="button" class="btn btn-primary" onclick="shuffle()">
-                Shuffle
-              </button>
-            </div>
-            <div>
-              <button
-                type="button"
-                class="btn btn-primary"
-                onclick="resetTimer()"
-              >
-                Reset
-              </button>
-            </div>
-            <div>
+            <div class="mb-1">
               <button
                 type="button"
                 class="btn btn-primary"
                 onclick="startTimer()"
               >
                 Start
-                <!-- <span class="material-icons-outlined"> play_arrow </span> -->
               </button>
             </div>
-            <div>
+            <div class="mb-1">
+              <button
+                type="button"
+                class="btn btn-primary"
+                onclick="resetTimer()"
+              >
+                Reset Time
+              </button>
+            </div>
+            <div class="mb-1">
+              <button type="button" class="btn btn-primary" onclick="shuffle()">
+                Shuffle
+              </button>
+            </div>
+            <div class="mb-1">
               <button
                 type="button"
                 class="btn btn-primary"
@@ -153,12 +139,8 @@
               </button>
             </div>
           </div>
-          <div>
-            <!-- <button type="button" class="btn btn-primary" id="myBtn">
-              Instructions
-            </button> -->
-          </div>
-        </div>
+          <div></div>
+        </aside>
         <div class="col-lg-6">
           <div id="container2" class="game">
             <div id="1" onclick="move(id)">1</div>
@@ -179,21 +161,14 @@
             <div id="16" onclick="move(id)" class="empty">&nbsp;</div>
           </div>
         </div>
-      </div>
-    </div>
-
-    <!-- <section>
-      <h2>Toggle - Default</h2>
-      <div class="neumorphic variation2">
-        <span><strong>Auto</strong></span>
-      </div>
+      </section>
     </section>
-    <section>
-      <h2>Toggle - Pressed</h2>
-      <div class="neumorphic neumorphic--pressed variation2 pressed">
-        <span><strong>Auto</strong></span>
-      </div>
-    </section> -->
+    <footer class="footer container text-right">
+      Developed by
+      <a href="https://shelcia-dev.me/" target="blank" rel="noreferrer"
+        >Shelcia</a
+      >
+    </footer>
     <script src="js/script.js"></script>
   </body>
 </html>

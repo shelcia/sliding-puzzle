@@ -191,6 +191,7 @@ const resetTimer = () => {
   timerDisplay.innerHTML = "00:" + seconds + "0";
   // + "s"
   resultAlert.style.display = "none";
+  finish_buttons.style.display = "none";
 };
 
 //DISPLAYING TIMER TRIGGERS ON STARTING THE TIMER ENDS AT 60 SECONDS
@@ -235,20 +236,6 @@ const Finish_task = () => {
   finish_buttons.style.display = "none";
 };
 
-// SELECT DIFFICULTY
-
-// var slider = document.getElementById("Difficulty");
-
-// slider.oninput = () => {
-//   if (this.value > 0 && this.value < 50) {
-//     this.value = 50;
-//   } else if (this.value > 50) {
-//     this.value = 100;
-//   } else {
-//     this.value = 0;
-//   }
-// };
-
 // MODAL
 var modal = document.getElementById("myModal");
 
@@ -258,18 +245,26 @@ var btn = document.getElementById("myBtn");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
+// Get the <button> element that closes the modal
+var btnClose = document.getElementsByClassName("btn-close")[0];
+
 // When the user clicks on the button, open the modal
-btn.onclick = function () {
+btn.onclick = () => {
   modal.style.display = "block";
 };
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function () {
+span.onclick = () => {
+  modal.style.display = "none";
+};
+
+// When the user clicks on <button> (.btn-colse), close the modal
+btnClose.onclick = () => {
   modal.style.display = "none";
 };
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
+window.onclick = (event) => {
   if (event.target == modal) {
     modal.style.display = "none";
   }
