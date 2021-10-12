@@ -10,20 +10,22 @@ A classic sliding puzzle (4*4) built using Vanilla JS
 
 ## Game Instructions
 
+![game demo image](https://ik.imagekit.io/shelcia/my_other_stuff/Screenshot_2021-10-12_at_10.35.44_AM_1V1KC33PT.png?updatedAt=1634029569830)
+
 The game can be played in Two modes
 
  - Timer Mode 
  - Non-Timer Mode
 
 
-1. In timer Mode you will have to complete the game within 60 seconds to win.
-2. To start timer Mode click the Button named Start
-3. In case you want to reset the Timer click the button named Reset
-4. If you want to Reset all tiles to their original place click ResetTile button
-5. To play Non-Timer mode click shuffle to play
+1. In timer Mode you will have to complete the game within **60 seconds** to win.
+2. To start timer Mode click the Button named **Start**.
+3. In case you want to reset the Timer click the button named **Reset**.
+4. If you want to Reset all tiles to their original place click **ResetTile** button.
+5. To play Non-Timer mode click **Shuffle** to play.
 6. Difficulty level can be chosen in dropdown for both Modes
 
 
 *Happy Gaming* !!
 
-The app is deployed here at https://sliding-puzzle-basic.netlify.app/
+The app is deployed here at **https://sliding-puzzle-basic.netlify.app/**
